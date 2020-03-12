@@ -13,7 +13,8 @@ class TasksController < ApplicationController
   def update
     task = Task.find_by(id: params[:id])
     return unless task
-    task = task.update(name: params[:name], completed: params[:completed])
+    task.update_attributes(name: params[:name], completed: params[:completed])
+    task.save!
 
     render json: task
   end
