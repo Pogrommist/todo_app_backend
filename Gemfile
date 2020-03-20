@@ -34,7 +34,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pg'
 gem 'rack-cors'
-
+gem 'devise'
+gem 'devise_token_auth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
