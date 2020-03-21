@@ -3,11 +3,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :destroy]
 
   def index
-    render json: Task.all, each_serializer: TaskSerializer
+    return unless current_user
+    render json: current_user.tasks, each_serializer: TaskSerializer
   end
 
   def create
-    task = Task.create(name: params[:name])
+    task = current_user.tasks.create(name: params[:name])
     render json: task
   end
 
