@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :destroy]
 
   def index
-    render json: Task.all
+    render json: Task.all, each_serializer: TaskSerializer
   end
 
   def create
