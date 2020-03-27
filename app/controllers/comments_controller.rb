@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_task, only: [:create]
 
   def create
-    comment = @task.comments.create(comment: params[:comment], task_id: @task.id, user_id: current_user.id)
+    comment = @task.comments.create(comment: params[:comment], task_id: @task.id, user_id: current_user.id, author: current_user.email)
     render json: comment
   end
 
