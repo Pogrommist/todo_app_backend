@@ -4,11 +4,17 @@ class TasksController < ApplicationController
 
   def index
     return unless current_user
-    render json: current_user.tasks, each_serializer: TaskSerializer
+    if current_user.isAdmin
+      render json: Task.all, each_serializer: TaskSerializer
+    else
+      render json: current_user.tasks, each_serializer: TaskSerializer
+    end
   end
 
   def create
-    task = current_user.tasks.create(name: params[:name])
+    user = User.find_by(email: params[:email])
+    return unless user
+    task = user.tasks.create(name: params[:name])
     render json: task
   end
 
