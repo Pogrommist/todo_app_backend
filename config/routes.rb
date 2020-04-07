@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :comments
 
   post '/get_user/'  => 'users#show'
+  post '/update_user' => 'users#update_user'
 end
